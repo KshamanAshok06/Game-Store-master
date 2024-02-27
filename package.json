@@ -25,6 +25,7 @@
     "react-router-dom": "^6.11.0",
     "react-toastify": "^10.0.4",
     "react-transition-group": "^4.4.5",
+    "vercel": "^33.5.2",
     "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
