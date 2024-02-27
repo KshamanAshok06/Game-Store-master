@@ -1,0 +1,57 @@
+// RegistrationForm Component
+function RegistrationForm() {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      // Handle form submission here
+      console.log(
+        `Username: ${username}, Email: ${email}, Password: ${password}`
+      );
+    };
+  
+    return (
+      <AnimatedPage>
+        <div className="flex min-h-screen flex-col items-center justify-center gap-10 p-4">
+          <section>
+            <div className="w-fit">
+              <h1 className="font-heading text-dynamicHeading font-black text-white">
+                Register
+              </h1>
+              <form onSubmit={handleSubmit} className="mt-4">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  className="input input-bordered input-primary w-1/2 mb-4"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="input input-bordered input-primary w-1/2 mb-4"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="input input-bordered input-primary w-1/2 mb-4"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="border border-white px-5 py-3 font-heading text-dynamicText font-bold text-white duration-500 hover:bg-white hover:text-neonPink"
+                >
+                  Register
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </AnimatedPage>
+    );
+  }

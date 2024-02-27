@@ -1,0 +1,68 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const User = require('./models/user');
+
+dotenv.config();
+
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect("mongodb+srv://user1:pass1@cluster0.mbom8gd.mongodb.net/gamestore?retryWrites=true&w=majority")
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
+
+// Import your User model schema defined elsewhere
+
+// Middleware
+app.use(express.json()); // Parse JSON data from requests
+app.use(cors()); // Enable CORS for frontend access
+
+// Registration route
+app.post('/register', async (req, res) => {
+    const { username, email, password } = req.body;
+    console.log(username, email, password);
+
+    // Validate user input (email format, password strength)
+
+    try {
+        const user = new User({ username, email, password });
+        await user.save();
+
+        // Generate JWT (e.g., using a library like `jsonwebtoken`)
+
+        res.json({ message: 'Registration successful' });
+    } catch (err) {
+        console.error('Error registering user:', err);
+        res.status(500).json({ error: 'Registration failed' });
+    }
+});
+
+// Login route
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    console.log(username, password);
+
+    try {
+        const user = await User.findOne({ username });
+        console.log("userfound", user);
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        if (user.password !== password && user.username !== username) {
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        res.json({ message: 'Login successful' });
+    } catch (err) {
+        console.error('Error logging in user:', err);
+        res.status(500).json({ error: 'Login failed' });
+    }
+});
+
+// Protected routes (implement authentication middleware here)
+
+app.listen(4000, () => console.log('Server listening on port 4000'));

@@ -1,0 +1,43 @@
+<div className="flex min-h-screen flex-col items-center justify-center gap-10 p-4">
+        <section>
+          <div className="w-fit">
+            <h1 className="font-heading text-dynamicHeading font-black text-white">
+              Welcome to our Game Store! 🎮
+            </h1>
+            <article className="text-dynamicText text-lightText">
+              <p className="mb-4 mt-6 max-w-4xl">
+                Step into a world of limitless gaming possibilities and immerse
+                yourself in thrilling adventures. Whether you&#39;re a casual
+                player or a die-hard gamer, we&#39;ve got you covered with a
+                vast collection of games for all platforms. Join us on this
+                gaming journey at unbeatable prices, only at our Game Store.
+                Your gaming dreams are just a click away!
+              </p>
+            </article>
+          </div>
+          <div className="flex w-full items-center gap-4">
+            <Link
+              to="/store"
+              role="button"
+              className="border border-neonPink px-5 py-3 font-heading text-dynamicText font-bold text-neonPink duration-500 hover:bg-neonPink hover:text-white"
+            >
+              OPEN STORE
+            </Link>
+            <Link
+              to="/register"
+              role="button"
+              className="border border-white px-5 py-3 font-heading text-dynamicText font-bold text-white duration-500 hover:bg-white hover:text-neonPink"
+            >
+              REGISTER
+            </Link>
+            <Link
+              onClick="RegistrationForm()"
+              role="button"
+
+              className="border border-white px-5 py-3 font-heading text-dynamicText font-bold text-white duration-500 hover:bg-white hover:text-neonPink"
+            >
+              LOGIN
+            </Link>
+          </div>
+        </section>
+      </div>
